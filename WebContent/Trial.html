@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="d3.js" charset="utf-8"></script>
+<script src="trial.js" charset="utf-8"></script>
+<script type="text/javascript">
+var itxt = 'Sales Department 400';
+var chkTxt = 's';
+
+//var splitArr = splitToArraybyRex(itxt);
+//iterateArrayer(splitArr, chkTxt);
+
+var str = "Sales Dsaepartsament  400",    
+    re = new RegExp('sa', 'gi'),
+    result = [],
+    match,
+    last_idx = 0;
+    
+var lastItrLstIdx = 0;    
+
+while( match = re.exec( str ) ) {
+		if(lastItrLstIdx != match.index){
+			result.push(str.substring(lastItrLstIdx,match.index));	
+		}	
+		if(match.index!=re.lastIndex){
+			result.push('*'+str.substring(match.index,re.lastIndex)+'*');	
+		}
+		lastItrLstIdx = re.lastIndex;
+}
+if(str.substring(lastItrLstIdx) != ''){
+	result.push( str.substring(lastItrLstIdx) );	
+}
+
+
+console.log(result);
+
+
+
+
+
+function fx(){
+
+	var str = "sasadsadsaddsaddd",    
+    re = new RegExp('sa', 'gi'),
+    result = [],
+    match,
+    last_idx = 0;
+
+while( match = re.exec( str ) ) {
+   var st =  str.substring( last_idx, re.lastIndex - match[0].length );
+   console.log(match);
+   console.log(re.lastIndex);
+   result.push(st, match[0]);
+   last_idx = re.lastIndex;
+}
+result.push( str.slice( last_idx ) );
+
+}
+
+
+
+
+
+function splitToArraybyRex(inpStr) {
+    var rex = new RegExp(chkTxt, "gi");
+    var splitAray = inpStr.split(rex);
+    console.log(inpStr);
+    console.log(splitAray);
+    return splitAray;
+}
+
+function iterateArrayer(arr, inpTxt) {
+    var arrLen = arr.length-1;
+    var checkStr = '';
+    for (var i = 0; i <= arrLen; i++) {
+        //add input if it is empty . 
+        if (arr[i] === "") {
+        	if(i==arrLen){
+        		if(arr.join() == ""){
+        			break;
+        		}
+        	}else{
+        		console.log('*' + inpTxt + '*');
+        	}
+        } else {
+        	if(arr[i+1] != undefined){
+        		console.log(arr[i]+'*' + inpTxt + '*');
+        	
+        	}else{
+        		console.log(arr[i]);
+        	}
+       }
+    }
+}
+
+function addNElements(n){
+	var x = document.getElementById('component-outer-ring');
+	for (var i = 0; i <= arrLen; i++) {
+		
+		
+	}
+}
+
+
+
+
+</script>
+<style type="text/css">
+.component {
+	height: 30px;
+	border: 1px solid gray;
+	width: 100px;
+	float: left;
+	line-height: 30px;
+	margin-bottom: 5px;
+	font-family: serif;
+	font-size: 20px;
+	font-style: italic;
+	color: red;
+	overflow: auto;
+}
+
+.component:FOCUS {
+	background-color: #cceeff;
+	border-color: red;
+}
+
+.component-outer-ring {
+	border: 4px solid gray;
+	width: 100px;
+	padding: 20px;
+	padding-right: 26px;
+	overflow: auto;
+	radius : 2px;
+}
+
+.parent-division {
+	margin-left: 100px
+}
+</style>
+</head>
+<body onload="onloadDraw();">
+	<div id="parent-division" class="parent-division">
+			<!-- <div id="component-outer-ring" class="component-outer-ring">
+			<div id="component" class="component" contenteditable="true" ></div>
+			<div id="component1" class="component" contenteditable="true"></div>
+			<div id="component2" class="component" contenteditable="true"></div>
+			<div id="component3" class="component" contenteditable="true"></div>
+			<div id="component4" class="component" contenteditable="true"></div>
+			<div id="component5" class="component" contenteditable="true"></div>
+			<div id="component6" class="component" contenteditable="true"></div>
+			<div id="component7" class="component" contenteditable="true"></div>
+			<div id="component8" class="component" contenteditable="true"></div>
+			<div id="component9" class="component" contenteditable="true"></div>
+			<div id="component10" class="component" contenteditable="true"></div>
+			<div id="component11" class="component" contenteditable="true"></div>
+		</div> -->
+	</div>
+	<div class="chart"></div>
+</body>
+</html>
